@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Local Music Player</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #555;
+    }
+    .song {
+      margin: 20px 0;
+    }
+    audio {
+      width: 100%;
+      max-width: 400px;
+      margin: 10px auto;
+    }
+    button {
+      margin-top: 5px;
+      padding: 5px 10px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .copied {
+      color: green;
+      font-size: 0.9em;
+      display: none;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎶 My Local Music Collection 🎶</h1>
+  <p>Click play to listen to your favorite songs!</p>
+
+  <div class="song">
+    <h3>Song 1: Duyên mộng vỡ tan</h3>
+    <audio controls>
+      <source src="assets/audio/duyen_mong_vo_tan.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="copyLink('assets/audio/duyen_mong_vo_tan.mp3')">Copy Link</button>
+    <p class="copied" id="copied-1">Copied!</p>
+  </div>
+
+  <div class="song">
+    <h3>Song 2: Cánh hoa héo tàn</h3>
+    <audio controls>
+      <source src="assets/audio/canh_hoa_heo_tan.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="copyLink('assets/audio/canh_hoa_heo_tan.mp3')">Copy Link</button>
+    <p class="copied" id="copied-2">Copied!</p>
+  </div>
+
+  <div class="song">
+    <h3>Song 3: Hoa Cỏ Lau</h3>
+    <audio controls>
+      <source src="assets/audio/hoa_co_lau.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="copyLink('assets/audio/hoa_co_lau.mp3')">Copy Link</button>
+    <p class="copied" id="copied-3">Copied!</p>
+  </div>
+
+  <div class="song">
+    <h3>Song 4: Thủy Triều</h3>
+    <audio controls>
+      <source src="assets/audio/thuy_trieu.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="copyLink('assets/audio/thuy_trieu.mp3')">Copy Link</button>
+    <p class="copied" id="copied-3">Copied!</p>
+  </div>
+
+  <div class="song">
+    <h3>Song 5: Tủi Duyên</h3>
+    <audio controls>
+      <source src="assets/audio/tui_duyen.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="copyLink('assets/audio/tui_duyen.mp3')">Copy Link</button>
+    <p class="copied" id="copied-3">Copied!</p>
+  </div>
+
+  <div class="song">
+    <h3>Song 6: Đừng hỏi em ổn không</h3>
+    <audio controls>
+      <source src="assets/audio/dung_hoi_em_on_khong.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="copyLink('assets/audio/dung_hoi_em_on_khong.mp3')">Copy Link</button>
+    <p class="copied" id="copied-3">Copied!</p>
+  </div>
+
+
+  <footer>
+    <p>Created with ❤️. All files stored locally.</p>
+  </footer>
+
+  <script>
+    function copyLink(link) {
+      // Tạo một phần tử input tạm thời để sao chép
+      const tempInput = document.createElement('input');
+      document.body.appendChild(tempInput);
+      tempInput.value = location.href.replace(/\/index\.html$/, '') + '/' + link; // Thêm đường dẫn đầy đủ
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      // Hiển thị thông báo "Copied!"
+      const copiedText = document.querySelector(`#copied-${link.split('/').pop().split('.')[0].replace('song', '')}`);
+      copiedText.style.display = 'block';
+      setTimeout(() => {
+        copiedText.style.display = 'none';
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
